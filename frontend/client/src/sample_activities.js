@@ -21,6 +21,7 @@ var activities = [
   },
   {
     "title": "Softplay at Tumbles",
+    "Description": "Edinburgh's largest softplay experience, with slides, tubes, bridges, climbing frames, ball pools and more. Suitable for 7 and under with separate sections for 4 and over, under 3s and babies.",
     "min_age": 0,
     "max_age": 6,
     "weather": [ ],
@@ -35,6 +36,7 @@ var activities = [
   },  
   {
     "title": "Kite Flying in The Meadows",
+    "Description": "Time to get outside and enjoy the fresh air.",
     "min_age": 4,
     "max_age": 14,
     "weather": [
@@ -73,7 +75,7 @@ var activities = [
     "image": ""
   },
   {
-    "title": "Go Ape",
+    "title": "Go Ape at Aberfoyle",
     "min_age": 1,
     "max_age": 6,
     "weather": [ 

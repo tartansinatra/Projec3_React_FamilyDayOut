@@ -1,17 +1,25 @@
 var React = require('react');
+var Activity = require('./Activity.jsx')
 
 var ActivitiesList = React.createClass({
   render: function(){
     console.log('props on list', this.props.activities)
 
-    var fakeActivies = [<li>Park</li>, <li>Museum</li>];
-    return(
-    <div>
-      <h2> Activities List </h2>
-      <ul> { fakeActivies } </ul>
-    </div>
+    var activityNodes = this.props.activities.map(function(activity){
+      return(
+          <Activity title={activity.title}> </Activity>
+      );
+    });
 
-    )
+
+    return(
+      <div className="activityList">
+      <h2> Activities List </h2>
+          {activityNodes}      
+      </div>
+    );  
+
+    
   }
 });
 

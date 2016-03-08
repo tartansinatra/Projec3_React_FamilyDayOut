@@ -19740,6 +19740,7 @@
 	  "image": ""
 	}, {
 	  "title": "Softplay at Tumbles",
+	  "Description": "Edinburgh's largest softplay experience, with slides, tubes, bridges, climbing frames, ball pools and more. Suitable for 7 and under with separate sections for 4 and over, under 3s and babies.",
 	  "min_age": 0,
 	  "max_age": 6,
 	  "weather": [],
@@ -19753,6 +19754,7 @@
 	  "image": ""
 	}, {
 	  "title": "Kite Flying in The Meadows",
+	  "Description": "Time to get outside and enjoy the fresh air.",
 	  "min_age": 4,
 	  "max_age": 14,
 	  "weather": [{ "id": 1, "value": "fair" }, { "id": 2, "value": "sunny" }, { "id": 3, "value": "breezy" }, { "id": 4, "value": "dry" }],
@@ -19778,7 +19780,7 @@
 	  "latLng": { "lat": 55.96515, "lng": -3.21590 },
 	  "image": ""
 	}, {
-	  "title": "Go Ape",
+	  "title": "Go Ape at Aberfoyle",
 	  "min_age": 1,
 	  "max_age": 6,
 	  "weather": [{ "id": 1, "value": "fair" }, { "id": 2, "value": "sunny" }, { "id": 3, "value": "breezy" }, { "id": 4, "value": "dry" }, { "id": 5, "value": "stormy" }],
@@ -19814,6 +19816,7 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	var Activity = __webpack_require__(163);
 	
 	var ActivitiesList = React.createClass({
 	  displayName: 'ActivitiesList',
@@ -19821,35 +19824,66 @@
 	  render: function render() {
 	    console.log('props on list', this.props.activities);
 	
-	    var fakeActivies = [React.createElement(
-	      'li',
-	      null,
-	      'Park'
-	    ), React.createElement(
-	      'li',
-	      null,
-	      'Museum'
-	    )];
+	    var activityNodes = this.props.activities.map(function (activity) {
+	      return React.createElement(
+	        Activity,
+	        { title: activity.title },
+	        ' '
+	      );
+	    });
+	
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'activityList' },
 	      React.createElement(
 	        'h2',
 	        null,
 	        ' Activities List '
 	      ),
-	      React.createElement(
-	        'ul',
-	        null,
-	        ' ',
-	        fakeActivies,
-	        ' '
-	      )
+	      activityNodes
 	    );
 	  }
 	});
 	
 	module.exports = ActivitiesList;
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var Activity = React.createClass({
+	  displayName: 'Activity',
+	
+	
+	  // getInitialState:function()
+	  // return()
+	
+	  render: function render() {
+	    var activityTitle = this.props.title;
+	    console.log(activityTitle);
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'ul',
+	        null,
+	        React.createElement(
+	          'li',
+	          null,
+	          ' ',
+	          activityTitle,
+	          ' '
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Activity;
 
 /***/ }
 /******/ ]);
