@@ -66,8 +66,8 @@ var activities = [
 
 
 {
-    "title": "Go Ape at Aberfoyle",
-    "Description": "A high wire forestry adventure course that's safe, active and great value taking around 3hrs to complete, with some of the longest zip wires in the UK. Just outside Aberfoyle, on the road to Stirling, about 1hr drive from Edinburgh.",
+    "title": "Rocking Climbing at Alien Rock",
+    "Description": "Suitable for tweenagers and up, you can book a class and scale the internal rockwalls of a converted church.  Well worth the kids entry fee shown.",
     // "min_age": 9,
     // "max_age": 65,
     "ageGroup": [
@@ -81,15 +81,15 @@ var activities = [
     {"id": 4, "value":"dry"},
     {"id": 5, "value":"stormy"}
     ],
-    "price": 25,
+    "price": 13,
     "type": "Active",
-    "add1": "David Marshall Lodge",
-    "add2": "Queen Elizabeth Forest Park",
-    "add3": "Aberfoyle",
-    "postcode": "",
-    "phone": "",
-    "latLng": {"lat": 56.18223, "lng": -4.38534},
-    "image": "https://i.ytimg.com/vi/TKUjKP_hZQU/maxresdefault.jpg"
+    "add1": "8 Pier Place",
+    "add2": "Newhaven",
+    "add3": "Edinburgh",
+    "postcode": "EH6 4LP",
+    "phone": "0131 552 7211",
+    "latLng": {"lat": 55.980463, "lng": -3.196498},
+    "image": "http://www.alienrock.co.uk/alien_two_pages/alien_two_about/RH_image_alien_two_about_btm.jpg"
 },
 {
     "title": "Kite Flying in The Meadows",

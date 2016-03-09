@@ -19666,9 +19666,9 @@
 	var ActivitiesList = __webpack_require__(160);
 	var AgeSelect = __webpack_require__(162);
 	var TypeSelect = __webpack_require__(166);
+	var BudgetSelect = __webpack_require__(167);
+	var WeatherSelect = __webpack_require__(168);
 	// var ActivityFilters = require('./ActivityFilters.js');
-	// var BudgetSelect = require('BudgetSelect.jsx');
-	// var WeatherSelect = require('WeatherSelect.jsx');
 	
 	var sampleActivites = __webpack_require__(163);
 	
@@ -19677,7 +19677,7 @@
 	
 	
 	  getInitialState: function getInitialState() {
-	    return { activities: [], currentAgeGroup: null, currentType: null };
+	    return { activities: [], currentAgeGroup: null, currentType: null, currentBudget: null };
 	  },
 	
 	  handleAgeGroupUpdate: function handleAgeGroupUpdate(ageGroupId) {
@@ -19688,6 +19688,16 @@
 	  handleTypeUpdate: function handleTypeUpdate(typeId) {
 	    console.log('AB wanted to change typeID to', typeId);
 	    this.setState({ currentType: parseInt(typeId) });
+	  },
+	
+	  handleBudgetUpdate: function handleBudgetUpdate(budgetId) {
+	    console.log('AB wanted to change budgetID to', budgetId);
+	    this.setState({ currentBudget: parseInt(budgetId) });
+	  },
+	
+	  handleWeatherUpdate: function handleWeatherUpdate(budgetId) {
+	    console.log('AB wanted to change weatherID to', weatherId);
+	    this.setState({ currentWeather: parseInt(weatherId) });
 	  },
 	
 	  componentDidMount: function componentDidMount() {
@@ -19786,10 +19796,20 @@
 	        ' Current Type: ',
 	        this.state.currentType
 	      ),
+	      React.createElement(
+	        'h4',
+	        null,
+	        ' Current Budget: ',
+	        this.state.currentBudget
+	      ),
 	      'Select Age Group: ',
 	      React.createElement(AgeSelect, { onSelectAgeGroup: this.handleAgeGroupUpdate }),
 	      'Type of Activity Preferred: ',
 	      React.createElement(TypeSelect, { onSelectType: this.handleTypeUpdate }),
+	      'Budget Preferred: ',
+	      React.createElement(BudgetSelect, { onSelectBudget: this.handleBudgetUpdate }),
+	      'Budget Preferred: ',
+	      React.createElement(WeatherSelect, { onSelectWeather: this.handleWeatherUpdate }),
 	      React.createElement(
 	        ActivitiesList,
 	        { activities: filteredActivities },
@@ -19904,8 +19924,6 @@
 	    var ageGroupSelected = e.target.value;
 	    this.setState({ selectedIndex: ageGroupSelected });
 	    this.props.onSelectAgeGroup(ageGroupSelected);
-	    // var currentAge = this.props.ages.[ageSelected]
-	    // this.props.onSelectAge(currentAge);
 	  },
 	
 	  render: function render() {
@@ -19992,21 +20010,21 @@
 	    "latLng": { "lat": 55.88625, "lng": -3.097898 },
 	    "image": "http://www.powertee.co.uk/Uploads/range_devere.jpg"
 	}, {
-	    "title": "Go Ape at Aberfoyle",
-	    "Description": "A high wire forestry adventure course that's safe, active and great value taking around 3hrs to complete, with some of the longest zip wires in the UK. Just outside Aberfoyle, on the road to Stirling, about 1hr drive from Edinburgh.",
+	    "title": "Rocking Climbing at Alien Rock",
+	    "Description": "Suitable for tweenagers and up, you can book a class and scale the internal rockwalls of a converted church.  Well worth the kids entry fee shown.",
 	    // "min_age": 9,
 	    // "max_age": 65,
 	    "ageGroup": [{ "id": 3, "value": "tweens" }, { "id": 4, "value": "teens" }],
 	    "weather": [{ "id": 1, "value": "fair" }, { "id": 2, "value": "sunny" }, { "id": 3, "value": "breezy" }, { "id": 4, "value": "dry" }, { "id": 5, "value": "stormy" }],
-	    "price": 25,
+	    "price": 13,
 	    "type": "Active",
-	    "add1": "David Marshall Lodge",
-	    "add2": "Queen Elizabeth Forest Park",
-	    "add3": "Aberfoyle",
-	    "postcode": "",
-	    "phone": "",
-	    "latLng": { "lat": 56.18223, "lng": -4.38534 },
-	    "image": "https://i.ytimg.com/vi/TKUjKP_hZQU/maxresdefault.jpg"
+	    "add1": "8 Pier Place",
+	    "add2": "Newhaven",
+	    "add3": "Edinburgh",
+	    "postcode": "EH6 4LP",
+	    "phone": "0131 552 7211",
+	    "latLng": { "lat": 55.980463, "lng": -3.196498 },
+	    "image": "http://www.alienrock.co.uk/alien_two_pages/alien_two_about/RH_image_alien_two_about_btm.jpg"
 	}, {
 	    "title": "Kite Flying in The Meadows",
 	    "Description": "Time to get outside and enjoy the fresh air.",
@@ -20174,6 +20192,104 @@
 	});
 	
 	module.exports = TypeSelect;
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var BudgetSelect = React.createClass({
+	  displayName: 'BudgetSelect',
+	
+	
+	  getInitialState: function getInitialState() {
+	    return { selectedIndex: null };
+	  },
+	
+	  handleChange: function handleChange(e) {
+	    e.preventDefault();
+	    var budgetSelected = e.target.value;
+	    this.setState({ selectedIndex: budgetSelected });
+	    this.props.onSelectBudget(budgetSelected);
+	  },
+	
+	  render: function render() {
+	    var budgetSelectOptions = [{ 'id': 1, 'value': 'FREE' }, { 'id': 2, 'value': 'under £10' }, { 'id': 3, 'value': 'over £10' }];
+	
+	    var options = budgetSelectOptions.map(function (budgetSelectOption) {
+	      return React.createElement(
+	        'option',
+	        { value: budgetSelectOption.id, key: budgetSelectOption.id },
+	        ' ',
+	        budgetSelectOption.value,
+	        ' '
+	      );
+	    });
+	
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'select',
+	        { value: this.state.selectedIndex, onChange: this.handleChange },
+	        options
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = BudgetSelect;
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var WeatherSelect = React.createClass({
+	  displayName: "WeatherSelect",
+	
+	
+	  getInitialState: function getInitialState() {
+	    return { selectedIndex: null };
+	  },
+	
+	  handleChange: function handleChange(e) {
+	    e.preventDefault();
+	    var weatherSelected = e.target.value;
+	    this.setState({ selectedIndex: weatherSelected });
+	    this.props.onSelectWeather(weatherSelected);
+	  },
+	
+	  render: function render() {
+	    var weatherSelectOptions = [{ "id": 1, "value": "fair" }, { "id": 2, "value": "sunny" }, { "id": 3, "value": "breezy" }, { "id": 4, "value": "dry" }, { "id": 5, "value": "rain" }];
+	
+	    var options = weatherSelectOptions.map(function (weatherSelectOption) {
+	      return React.createElement(
+	        "option",
+	        { value: weatherSelectOption.id, key: weatherSelectOption.id },
+	        weatherSelectOption.value
+	      );
+	    });
+	
+	    return React.createElement(
+	      "div",
+	      null,
+	      React.createElement(
+	        "select",
+	        { value: this.state.selectedIndex, onChange: this.handleChange },
+	        options
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = WeatherSelect;
 
 /***/ }
 /******/ ]);

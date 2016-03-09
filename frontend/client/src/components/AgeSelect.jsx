@@ -11,8 +11,6 @@ var AgeSelect = React.createClass({
     var ageGroupSelected = e.target.value
     this.setState({selectedIndex: ageGroupSelected});
     this.props.onSelectAgeGroup(ageGroupSelected);
-    // var currentAge = this.props.ages.[ageSelected]
-    // this.props.onSelectAge(currentAge);
   },
 
 
