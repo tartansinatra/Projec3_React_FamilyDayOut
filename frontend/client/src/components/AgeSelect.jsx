@@ -17,7 +17,12 @@ var AgeSelect = React.createClass({
 
 
   render: function(){
-    var ageSelectOptions = [{'id':1, 'value': 'toddler'}, {'id':2, 'value':'junior'}, {'id':3, 'value':'tweens'}, {'id': 4, 'value':'teens'}] 
+    var ageSelectOptions = [
+    {'id':1, 'value': 'toddler'},
+     {'id':2, 'value':'junior'}, 
+     {'id':3, 'value':'tweens'}, 
+     {'id': 4, 'value':'teens'}
+     ] 
     
     var options = ageSelectOptions.map(function(ageSelectOption){
       return <option value={ageSelectOption.id} key={ageSelectOption.id}> { ageSelectOption.value } </option>

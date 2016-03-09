@@ -19665,9 +19665,10 @@
 	var React = __webpack_require__(1);
 	var ActivitiesList = __webpack_require__(160);
 	var AgeSelect = __webpack_require__(162);
+	var TypeSelect = __webpack_require__(166);
+	// var ActivityFilters = require('./ActivityFilters.js');
 	// var BudgetSelect = require('BudgetSelect.jsx');
 	// var WeatherSelect = require('WeatherSelect.jsx');
-	// var TypeSelect = require('TypeSelect.jsx');
 	
 	var sampleActivites = __webpack_require__(163);
 	
@@ -19676,12 +19677,17 @@
 	
 	
 	  getInitialState: function getInitialState() {
-	    return { activities: [], currentAgeGroup: null };
+	    return { activities: [], currentAgeGroup: null, currentType: null };
 	  },
 	
 	  handleAgeGroupUpdate: function handleAgeGroupUpdate(ageGroupId) {
 	    console.log('AB wanting to change ageGroupId to', ageGroupId);
 	    this.setState({ currentAgeGroup: parseInt(ageGroupId) });
+	  },
+	
+	  handleTypeUpdate: function handleTypeUpdate(typeId) {
+	    console.log('AB wanted to change typeID to', typeId);
+	    this.setState({ currentType: parseInt(typeId) });
 	  },
 	
 	  componentDidMount: function componentDidMount() {
@@ -19774,7 +19780,16 @@
 	        ' Current Age Group: ',
 	        this.state.currentAgeGroup
 	      ),
+	      React.createElement(
+	        'h4',
+	        null,
+	        ' Current Type: ',
+	        this.state.currentType
+	      ),
+	      'Select Age Group: ',
 	      React.createElement(AgeSelect, { onSelectAgeGroup: this.handleAgeGroupUpdate }),
+	      'Type of Activity Preferred: ',
+	      React.createElement(TypeSelect, { onSelectType: this.handleTypeUpdate }),
 	      React.createElement(
 	        ActivitiesList,
 	        { activities: filteredActivities },
@@ -20107,6 +20122,58 @@
 	}];
 	
 	module.exports = activities;
+
+/***/ },
+/* 164 */,
+/* 165 */,
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var TypeSelect = React.createClass({
+	  displayName: 'TypeSelect',
+	
+	
+	  getInitialState: function getInitialState() {
+	    return { selectedIndex: null };
+	  },
+	
+	  handleChange: function handleChange(e) {
+	    e.preventDefault();
+	    var typeSelected = e.target.value;
+	    this.setState({ selectedIndex: typeSelected });
+	    this.props.onSelectType(typeSelected);
+	  },
+	
+	  render: function render() {
+	    var typeSelectOptions = [{ 'id': 1, 'value': 'active' }, { 'id': 2, 'value': 'creative' }, { 'id': 3, 'value': 'learning' }, { 'id': 4, 'value': 'tour' }];
+	
+	    var options = typeSelectOptions.map(function (typeSelectOption) {
+	      return React.createElement(
+	        'option',
+	        { value: typeSelectOption.id, key: typeSelectOption.id },
+	        ' ',
+	        typeSelectOption.value,
+	        ' '
+	      );
+	    });
+	
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'select',
+	        { value: this.state.selectedIndex, onChange: this.handleChange },
+	        options
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = TypeSelect;
 
 /***/ }
 /******/ ]);

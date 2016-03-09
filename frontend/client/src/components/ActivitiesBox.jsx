@@ -1,9 +1,10 @@
 var React = require('react')
 var ActivitiesList = require('./ActivitiesList.jsx');
 var AgeSelect = require('./AgeSelect.jsx');
+var TypeSelect = require('./TypeSelect.jsx');
+// var ActivityFilters = require('./ActivityFilters.js');
 // var BudgetSelect = require('BudgetSelect.jsx');
 // var WeatherSelect = require('WeatherSelect.jsx');
-// var TypeSelect = require('TypeSelect.jsx');
 
 
 var sampleActivites = require('../sample_activities.js');
@@ -12,12 +13,17 @@ var sampleActivites = require('../sample_activities.js');
 var ActivitiesBox = React.createClass({
 
   getInitialState:function(){
-    return({activities: [], currentAgeGroup:null})
+    return({activities: [], currentAgeGroup:null, currentType:null})
   },
 
   handleAgeGroupUpdate:function(ageGroupId){
     console.log('AB wanting to change ageGroupId to', ageGroupId);
     this.setState({currentAgeGroup: parseInt(ageGroupId)});
+  },
+
+  handleTypeUpdate:function(typeId){
+    console.log('AB wanted to change typeID to', typeId);
+    this.setState({currentType: parseInt(typeId)});
   },
 
   componentDidMount: function(){
@@ -65,7 +71,11 @@ var ActivitiesBox = React.createClass({
       <div>
         <h1> Top Level Activities Box </h1>
           <h4> Current Age Group: {this.state.currentAgeGroup}</h4>
-          <AgeSelect onSelectAgeGroup={this.handleAgeGroupUpdate}></AgeSelect>
+          <h4> Current Type: {this.state.currentType}</h4>
+          Select Age Group: <AgeSelect onSelectAgeGroup={this.handleAgeGroupUpdate}></AgeSelect>
+          
+          Type of Activity Preferred: <TypeSelect onSelectType={this.handleTypeUpdate}></TypeSelect>
+          
           <ActivitiesList activities={filteredActivities}> </ActivitiesList> 
       </div>
           // <TypeSelect> </TypeSelect>
