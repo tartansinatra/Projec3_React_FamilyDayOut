@@ -45,6 +45,27 @@ var activities = [
     "image": "http://www.continentalsports.co.uk/documents/tap1L.JPG"
 },  
 {
+    "title": "Golf Driving Range, Melville",
+    "Description": "Practice your tee shots and more just outside Dalkeith at at Edinburgh's purpose-built driving range.  Basic price shown for 50 balls, 100 balls £6.50.",
+    // "min_age": 0,
+    // "max_age": 6,
+    "ageGroup": [
+    {"id": 4, "value":"teens"}
+    ],
+    "weather": [ ],
+    "price": 4.50,
+    "type": "Active",
+    "add1": "Melville Golf Centre",
+    "add2": "Lasswade",
+    "add3": "nr Edinburgh",
+    "postcode": "EH18 1EN",
+    "phone": "0131 663 8038",
+    "latLng": {"lat": 55.88625, "lng": -3.097898},
+    "image": "http://www.powertee.co.uk/Uploads/range_devere.jpg"
+},  
+
+
+{
     "title": "Go Ape at Aberfoyle",
     "Description": "A high wire forestry adventure course that's safe, active and great value taking around 3hrs to complete, with some of the longest zip wires in the UK. Just outside Aberfoyle, on the road to Stirling, about 1hr drive from Edinburgh.",
     // "min_age": 9,
@@ -97,12 +118,12 @@ var activities = [
 },
 {
     "title": "Learn to Juggle",
-    "Description": "Teach your little ones the art of juggling indoors or outside, starting with coloured tissues or teabags and gradually build up to bags of lentils, apples or tennis balls.",
+    "Description": "Teach your tweenagers the art of juggling indoors or outside, starting with coloured tissues or teabags and gradually build up to bags of lentils, apples or tennis balls.",
     // "min_age": 8,
     // "max_age": 17,
     "ageGroup": [
-    {"id": 1, "value":"tweens"},
-    {"id": 2, "value":"teens"}
+    {"id": 3, "value":"tweens"},
+    {"id": 4, "value":"teens"}
     ],
     "weather": [ 
     {"id": 1, "value":"fair"},
