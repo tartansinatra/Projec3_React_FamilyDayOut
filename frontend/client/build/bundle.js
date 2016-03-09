@@ -19695,7 +19695,7 @@
 	    this.setState({ currentBudget: parseInt(budgetId) });
 	  },
 	
-	  handleWeatherUpdate: function handleWeatherUpdate(budgetId) {
+	  handleWeatherUpdate: function handleWeatherUpdate(weatherId) {
 	    console.log('AB wanted to change weatherID to', weatherId);
 	    this.setState({ currentWeather: parseInt(weatherId) });
 	  },
@@ -19782,45 +19782,50 @@
 	      React.createElement(
 	        'h1',
 	        null,
-	        ' Top Level Activities Box '
+	        ' Family Pick n Mix! '
 	      ),
 	      React.createElement(
 	        'h4',
 	        null,
-	        ' Current Age Group: ',
+	        'Current Age Group: ',
 	        this.state.currentAgeGroup
 	      ),
 	      React.createElement(
 	        'h4',
 	        null,
-	        ' Current Type: ',
+	        'Current Type: ',
 	        this.state.currentType
 	      ),
 	      React.createElement(
 	        'h4',
 	        null,
-	        ' Current Budget: ',
+	        'Current Budget: ',
 	        this.state.currentBudget
 	      ),
-	      'Select Age Group: ',
-	      React.createElement(AgeSelect, { onSelectAgeGroup: this.handleAgeGroupUpdate }),
-	      'Type of Activity Preferred: ',
-	      React.createElement(TypeSelect, { onSelectType: this.handleTypeUpdate }),
-	      'Budget Preferred: ',
-	      React.createElement(BudgetSelect, { onSelectBudget: this.handleBudgetUpdate }),
-	      'Budget Preferred: ',
-	      React.createElement(WeatherSelect, { onSelectWeather: this.handleWeatherUpdate }),
+	      React.createElement(
+	        'h4',
+	        null,
+	        'Current Weather: ',
+	        this.state.currentWeather
+	      ),
+	      React.createElement(
+	        'h3',
+	        null,
+	        'Select Age Group: ',
+	        React.createElement(AgeSelect, { onSelectAgeGroup: this.handleAgeGroupUpdate }),
+	        'Type of Activity Preferred: ',
+	        React.createElement(TypeSelect, { onSelectType: this.handleTypeUpdate }),
+	        'Budget Option: ',
+	        React.createElement(BudgetSelect, { onSelectBudget: this.handleBudgetUpdate }),
+	        'Weather Conditions: ',
+	        React.createElement(WeatherSelect, { onSelectWeather: this.handleWeatherUpdate })
+	      ),
 	      React.createElement(
 	        ActivitiesList,
 	        { activities: filteredActivities },
 	        ' '
 	      )
-	    )
-	    // <TypeSelect> </TypeSelect>
-	    // <BudgetSelect> </BudgetSelect>
-	    // <WeatherSelect> </WeatherSelect>
-	
-	    ;
+	    );
 	  }
 	});
 	

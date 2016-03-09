@@ -1,3 +1,11 @@
-.div {
-  background-color: red;
+body {
+  background-image: url('http://wolcottbiblechurch.com/files/2015/03/fam.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  /*background-color: skyblue;*/
+  background-size: 50%;
+}
+
+h4 {
+  margin: 0 0 20px 0;
 }

@@ -31,7 +31,7 @@ var ActivitiesBox = React.createClass({
     this.setState({currentBudget: parseInt(budgetId)});
   },
 
-  handleWeatherUpdate:function(budgetId){
+  handleWeatherUpdate:function(weatherId){
     console.log('AB wanted to change weatherID to', weatherId);
     this.setState({currentWeather: parseInt(weatherId)});
   },
@@ -79,24 +79,20 @@ var ActivitiesBox = React.createClass({
 
     return(
       <div>
-        <h1> Top Level Activities Box </h1>
-          <h4> Current Age Group: {this.state.currentAgeGroup}</h4>
-          <h4> Current Type: {this.state.currentType}</h4>
-          <h4> Current Budget: {this.state.currentBudget}</h4>
-          Select Age Group: <AgeSelect onSelectAgeGroup={this.handleAgeGroupUpdate}></AgeSelect>
-          
-          Type of Activity Preferred: <TypeSelect onSelectType={this.handleTypeUpdate}></TypeSelect>
+        <h1> Family Pick n Mix! </h1>
+          <h4>Current Age Group: {this.state.currentAgeGroup}</h4>
+          <h4>Current Type: {this.state.currentType}</h4>
+          <h4>Current Budget: {this.state.currentBudget}</h4>
+          <h4>Current Weather: {this.state.currentWeather}</h4>
 
-          Budget Preferred: <BudgetSelect onSelectBudget={this.handleBudgetUpdate}></BudgetSelect>
-          Budget Preferred: <WeatherSelect onSelectWeather={this.handleWeatherUpdate}></WeatherSelect>
-          
+          <h3>
+            Select Age Group: <AgeSelect onSelectAgeGroup={this.handleAgeGroupUpdate}></AgeSelect>
+            Type of Activity Preferred: <TypeSelect onSelectType={this.handleTypeUpdate}></TypeSelect>
+            Budget Option: <BudgetSelect onSelectBudget={this.handleBudgetUpdate}></BudgetSelect>
+            Weather Conditions: <WeatherSelect onSelectWeather={this.handleWeatherUpdate}></WeatherSelect>
+          </h3>
           <ActivitiesList activities={filteredActivities}> </ActivitiesList> 
       </div>
-          // <TypeSelect> </TypeSelect>
-          // <BudgetSelect> </BudgetSelect>
-          // <WeatherSelect> </WeatherSelect>
-        
-
       )
   }
 });
