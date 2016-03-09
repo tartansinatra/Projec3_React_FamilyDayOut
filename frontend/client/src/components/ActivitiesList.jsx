@@ -1,5 +1,6 @@
 var React = require('react');
-var Activity = require('./Activity.jsx')
+var Activity = require('./Activity.jsx');
+// var AgeSelect = require('./AgeSelect.jsx');
 
 var ActivitiesList = React.createClass({
   render: function(){
