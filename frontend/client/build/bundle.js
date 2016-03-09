@@ -19681,7 +19681,7 @@
 	
 	  handleAgeGroupUpdate: function handleAgeGroupUpdate(ageGroupId) {
 	    console.log('AB wanting to change ageGroupId to', ageGroupId);
-	    this.setState({ currentAgeGroup: ageGroupId });
+	    this.setState({ currentAgeGroup: parseInt(ageGroupId) });
 	  },
 	
 	  componentDidMount: function componentDidMount() {
@@ -19701,18 +19701,64 @@
 	    // request.send(null);
 	  },
 	
-	  // filteredActivities:function(ageGroupId){
-	  //   if(!ageGroupId) return this.chosenActivities
-	  //   var filteredActivities = [];
-	  //   for (var activity of this.chosenActivities){
-	  //     if (ageGroupId === activity.ageGroupId)
-	  //       filteredActivities.push(activity)
-	  //   }
-	  //     return filteredActivities;
-	  // },
-	
 	  render: function render() {
-	    var chosenActivities = this.state.activities;
+	    // var chosenActivities = this.state.activities
+	
+	    var filteredActivities = [];
+	
+	    var ageGroupId = this.state.currentAgeGroup;
+	    if (!ageGroupId) {
+	      filteredActivities = this.state.activities;
+	    } else {
+	      var _iteratorNormalCompletion = true;
+	      var _didIteratorError = false;
+	      var _iteratorError = undefined;
+	
+	      try {
+	        for (var _iterator = this.state.activities[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	          var activity = _step.value;
+	          var _iteratorNormalCompletion2 = true;
+	          var _didIteratorError2 = false;
+	          var _iteratorError2 = undefined;
+	
+	          try {
+	            for (var _iterator2 = activity.ageGroup[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	              var ageGroup = _step2.value;
+	
+	              if (ageGroupId === ageGroup.id) {
+	                filteredActivities.push(activity);
+	              }
+	            }
+	          } catch (err) {
+	            _didIteratorError2 = true;
+	            _iteratorError2 = err;
+	          } finally {
+	            try {
+	              if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	                _iterator2.return();
+	              }
+	            } finally {
+	              if (_didIteratorError2) {
+	                throw _iteratorError2;
+	              }
+	            }
+	          }
+	        }
+	      } catch (err) {
+	        _didIteratorError = true;
+	        _iteratorError = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion && _iterator.return) {
+	            _iterator.return();
+	          }
+	        } finally {
+	          if (_didIteratorError) {
+	            throw _iteratorError;
+	          }
+	        }
+	      }
+	    }
 	
 	    return React.createElement(
 	      'div',
@@ -19731,10 +19777,15 @@
 	      React.createElement(AgeSelect, { onSelectAgeGroup: this.handleAgeGroupUpdate }),
 	      React.createElement(
 	        ActivitiesList,
-	        { activities: chosenActivities },
+	        { activities: filteredActivities },
 	        ' '
 	      )
-	    );
+	    )
+	    // <TypeSelect> </TypeSelect>
+	    // <BudgetSelect> </BudgetSelect>
+	    // <WeatherSelect> </WeatherSelect>
+	
+	    ;
 	  }
 	});
 	
@@ -19878,22 +19929,6 @@
 	"use strict";
 	
 	var activities = [{
-	    "title": "National Museum of Scotland",
-	    "Description": "Spend a full morning or afternoon getting to know exhibits from the dinosaur and animal world, mixed with a compendium of science and geography with a nod to Scottish inventions inside one of the UK's most praised Victorian buildings.",
-	    // "min_age": 1,
-	    // "max_age": 80,
-	    "ageGroup": [{ "id": 1, "value": "toddler" }, { "id": 2, "value": "junior" }, { "id": 3, "value": "tweens" }, { "id": 4, "value": "teens" }],
-	    "weather": [{ "id": 1, "value": "fair" }, { "id": 2, "value": "sunny" }, { "id": 3, "value": "breezy" }, { "id": 4, "value": "dry" }, { "id": 4, "value": "rain" }],
-	    "price": 0.00,
-	    "type": "Tour",
-	    "add1": "Chambers Street",
-	    "add2": "",
-	    "add3": "Edinburgh",
-	    "postcode": "EH1 1JF",
-	    "phone": "0300 123 6789",
-	    "latLng": { "lat": 55.946768, "lng": -3.190418 },
-	    "image": "https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2011/7/27/1311798827089/national-museum-scotland-007.jpg"
-	}, {
 	    "title": "Playpark at Inverleith",
 	    "Description": "Enjoy fair weather by swinging, see-sawing and sliding through all the usual kiddie type apparatus.",
 	    // "min_age": 1,
@@ -19958,22 +19993,6 @@
 	    "latLng": { "lat": 55.94131, "lng": -3.192388 },
 	    "image": "http://www.punchbowl.com/gridfs/fs/4e176bedf92ea1739e0000d3-1310157806"
 	}, {
-	    "title": "The Ceramic Experience",
-	    "Description": "A great creative experience for kids of all ages. Even babies can get in on the act, leaving their hand or footprint (or moulds of either) and older kids and adults can spend time choosing from a wealth of pre-made ceramics and decorating them with messages to loved ones or painting them in their own choice of colours.  Price shown is typical cost for choosing one item, which is fired in the kiln and available to be collected the next day.",
-	    // "min_age": 1,
-	    // "max_age": 80,
-	    "ageGroup": [{ "id": 1, "value": "toddler" }, { "id": 2, "value": "junior" }, { "id": 3, "value": "tweens" }, { "id": 4, "value": "teens" }],
-	    "weather": [{ "id": 1, "value": "fair" }, { "id": 2, "value": "sunny" }, { "id": 3, "value": "breezy" }, { "id": 4, "value": "dry" }, { "id": 4, "value": "rain" }],
-	    "price": 10,
-	    "type": "Creative",
-	    "add1": "Ocean Drive",
-	    "add2": "Leith",
-	    "add3": "Edinburgh",
-	    "postcode": "",
-	    "phone": "",
-	    "latLng": { "lat": 55.96515, "lng": -3.21590 },
-	    "image": "http://www.weekendnotes.com/im/000/05/glaze-it-pottery-painting-pottery-studio-ceramics-11.JPG"
-	}, {
 	    "title": "Learn to Juggle",
 	    "Description": "Teach your little ones the art of juggling indoors or outside, starting with coloured tissues or teabags and gradually build up to bags of lentils, apples or tennis balls.",
 	    // "min_age": 8,
@@ -20037,6 +20056,38 @@
 	    "phone": "01368 863 607",
 	    "latLng": { "lat": 55.999598, "lng": -2.564269 },
 	    "image": "http://www.northberwickholidayhomes.co.uk/assets/images/East%20Links%20Family%20Park.jpg"
+	}, {
+	    "title": "National Museum of Scotland",
+	    "Description": "Spend a full morning or afternoon getting to know exhibits from the dinosaur and animal world, mixed with a compendium of science and geography with a nod to Scottish inventions inside one of the UK's most praised Victorian buildings.",
+	    // "min_age": 1,
+	    // "max_age": 80,
+	    "ageGroup": [{ "id": 1, "value": "toddler" }, { "id": 2, "value": "junior" }, { "id": 3, "value": "tweens" }, { "id": 4, "value": "teens" }],
+	    "weather": [{ "id": 1, "value": "fair" }, { "id": 2, "value": "sunny" }, { "id": 3, "value": "breezy" }, { "id": 4, "value": "dry" }, { "id": 4, "value": "rain" }],
+	    "price": 0.00,
+	    "type": "Tour",
+	    "add1": "Chambers Street",
+	    "add2": "",
+	    "add3": "Edinburgh",
+	    "postcode": "EH1 1JF",
+	    "phone": "0300 123 6789",
+	    "latLng": { "lat": 55.946768, "lng": -3.190418 },
+	    "image": "https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2011/7/27/1311798827089/national-museum-scotland-007.jpg"
+	}, {
+	    "title": "The Ceramic Experience",
+	    "Description": "A great creative experience for kids of all ages. Even babies can get in on the act, leaving their hand or footprint (or moulds of either) and older kids and adults can spend time choosing from a wealth of pre-made ceramics and decorating them with messages to loved ones or painting them in their own choice of colours.  Price shown is typical cost for choosing one item, which is fired in the kiln and available to be collected the next day.",
+	    // "min_age": 1,
+	    // "max_age": 80,
+	    "ageGroup": [{ "id": 1, "value": "toddler" }, { "id": 2, "value": "junior" }, { "id": 3, "value": "tweens" }, { "id": 4, "value": "teens" }],
+	    "weather": [{ "id": 1, "value": "fair" }, { "id": 2, "value": "sunny" }, { "id": 3, "value": "breezy" }, { "id": 4, "value": "dry" }, { "id": 4, "value": "rain" }],
+	    "price": 10,
+	    "type": "Creative",
+	    "add1": "Ocean Drive",
+	    "add2": "Leith",
+	    "add3": "Edinburgh",
+	    "postcode": "",
+	    "phone": "",
+	    "latLng": { "lat": 55.96515, "lng": -3.21590 },
+	    "image": "http://www.weekendnotes.com/im/000/05/glaze-it-pottery-painting-pottery-studio-ceramics-11.JPG"
 	}];
 	
 	module.exports = activities;

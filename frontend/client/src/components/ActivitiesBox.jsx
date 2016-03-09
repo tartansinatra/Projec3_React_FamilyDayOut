@@ -17,7 +17,7 @@ var ActivitiesBox = React.createClass({
 
   handleAgeGroupUpdate:function(ageGroupId){
     console.log('AB wanting to change ageGroupId to', ageGroupId);
-    this.setState({currentAgeGroup: ageGroupId});
+    this.setState({currentAgeGroup: parseInt(ageGroupId)});
   },
 
   componentDidMount: function(){
@@ -37,29 +37,40 @@ var ActivitiesBox = React.createClass({
     // request.send(null);
   },
 
+  
 
-  // filteredActivities:function(ageGroupId){
-  //   if(!ageGroupId) return this.chosenActivities
-  //   var filteredActivities = [];
-  //   for (var activity of this.chosenActivities){
-  //     if (ageGroupId === activity.ageGroupId)
-  //       filteredActivities.push(activity)
-  //   } 
-  //     return filteredActivities;
-  // },
 
 
   render: function(){
-  var chosenActivities = this.state.activities
+  // var chosenActivities = this.state.activities
+
+    var filteredActivities = [];
+
+    var ageGroupId = this.state.currentAgeGroup;
+    if(!ageGroupId) {
+      filteredActivities = this.state.activities;
+    } else {
+      for (var activity of this.state.activities){
+          for (var ageGroup of activity.ageGroup) {
+            if (ageGroupId === ageGroup.id){
+              filteredActivities.push(activity)
+            }
+          }
+      } 
+    }
+
 
 
     return(
       <div>
         <h1> Top Level Activities Box </h1>
           <h4> Current Age Group: {this.state.currentAgeGroup}</h4>
-          <AgeSelect onSelectAgeGroup = {this.handleAgeGroupUpdate}></AgeSelect>
-          <ActivitiesList activities={chosenActivities}> </ActivitiesList> 
+          <AgeSelect onSelectAgeGroup={this.handleAgeGroupUpdate}></AgeSelect>
+          <ActivitiesList activities={filteredActivities}> </ActivitiesList> 
       </div>
+          // <TypeSelect> </TypeSelect>
+          // <BudgetSelect> </BudgetSelect>
+          // <WeatherSelect> </WeatherSelect>
         
 
       )
