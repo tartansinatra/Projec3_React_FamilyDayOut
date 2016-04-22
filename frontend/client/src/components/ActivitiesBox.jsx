@@ -13,26 +13,26 @@ var sampleActivites = require('../sample_activities.js');
 var ActivitiesBox = React.createClass({
 
   getInitialState:function(){
-    return({activities: [], currentAgeGroup:null, currentType:null, currentBudget:null})
+    return({activities: [], currentAgeGroup:null, currentType:null, currentBudget:null, currentWeather:null})
   },
 
   handleAgeGroupUpdate:function(ageGroupId){
-    console.log('AB wanting to change ageGroupId to', ageGroupId);
+    console.log('Change ageGroupId to', ageGroupId);
     this.setState({currentAgeGroup: parseInt(ageGroupId)});
   },
 
   handleTypeUpdate:function(typeId){
-    console.log('AB wanted to change typeID to', typeId);
+    console.log('Change typeID to', typeId);
     this.setState({currentType: parseInt(typeId)});
   },
 
   handleBudgetUpdate:function(budgetId){
-    console.log('AB wanted to change budgetID to', budgetId);
+    console.log('Change budgetID to', budgetId);
     this.setState({currentBudget: parseInt(budgetId)});
   },
 
   handleWeatherUpdate:function(weatherId){
-    console.log('AB wanted to change weatherID to', weatherId);
+    console.log('Change weatherID to', weatherId);
     this.setState({currentWeather: parseInt(weatherId)});
   },
 
@@ -79,17 +79,17 @@ var ActivitiesBox = React.createClass({
 
     return(
       <div>
-        <h1> Family Pick n Mix! </h1>
-          <h4>Current Age Group: {this.state.currentAgeGroup}</h4>
-          <h4>Current Type: {this.state.currentType}</h4>
-          <h4>Current Budget: {this.state.currentBudget}</h4>
-          <h4>Current Weather: {this.state.currentWeather}</h4>
+        <h1> Edinburgh Family Day Out </h1>
+          <p>Current Age Group: {this.state.currentAgeGroup}</p>
+          Current Type: {this.state.currentType}  
+          Current Budget: {this.state.currentBudget}  
+          Current Weather: {this.state.currentWeather}  
 
           <h3>
-            Select Age Group: <AgeSelect onSelectAgeGroup={this.handleAgeGroupUpdate}></AgeSelect>
-            Type of Activity Preferred: <TypeSelect onSelectType={this.handleTypeUpdate}></TypeSelect>
-            Budget Option: <BudgetSelect onSelectBudget={this.handleBudgetUpdate}></BudgetSelect>
-            Weather Conditions: <WeatherSelect onSelectWeather={this.handleWeatherUpdate}></WeatherSelect>
+            1. Select Age Group: <AgeSelect onSelectAgeGroup={this.handleAgeGroupUpdate}></AgeSelect>
+            2. Type of Activity Preferred: <TypeSelect onSelectType={this.handleTypeUpdate}></TypeSelect>
+            3. Budget Option: <BudgetSelect onSelectBudget={this.handleBudgetUpdate}></BudgetSelect>
+            4. Weather Outlook: <WeatherSelect onSelectWeather={this.handleWeatherUpdate}></WeatherSelect>
           </h3>
           <ActivitiesList activities={filteredActivities}> </ActivitiesList> 
       </div>

@@ -1,8 +1,8 @@
 body {
-  background-image: url('http://wolcottbiblechurch.com/files/2015/03/fam.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  /*background-color: skyblue;*/
+  /*background-image: url('http://wolcottbiblechurch.com/files/2015/03/fam.jpg');*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: center;*/
+  background-color: skyblue;
   background-size: 50%;
 }
 

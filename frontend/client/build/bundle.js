@@ -19677,26 +19677,26 @@
 	
 	
 	  getInitialState: function getInitialState() {
-	    return { activities: [], currentAgeGroup: null, currentType: null, currentBudget: null };
+	    return { activities: [], currentAgeGroup: null, currentType: null, currentBudget: null, currentWeather: null };
 	  },
 	
 	  handleAgeGroupUpdate: function handleAgeGroupUpdate(ageGroupId) {
-	    console.log('AB wanting to change ageGroupId to', ageGroupId);
+	    console.log('Change ageGroupId to', ageGroupId);
 	    this.setState({ currentAgeGroup: parseInt(ageGroupId) });
 	  },
 	
 	  handleTypeUpdate: function handleTypeUpdate(typeId) {
-	    console.log('AB wanted to change typeID to', typeId);
+	    console.log('Change typeID to', typeId);
 	    this.setState({ currentType: parseInt(typeId) });
 	  },
 	
 	  handleBudgetUpdate: function handleBudgetUpdate(budgetId) {
-	    console.log('AB wanted to change budgetID to', budgetId);
+	    console.log('Change budgetID to', budgetId);
 	    this.setState({ currentBudget: parseInt(budgetId) });
 	  },
 	
 	  handleWeatherUpdate: function handleWeatherUpdate(weatherId) {
-	    console.log('AB wanted to change weatherID to', weatherId);
+	    console.log('Change weatherID to', weatherId);
 	    this.setState({ currentWeather: parseInt(weatherId) });
 	  },
 	
@@ -19782,42 +19782,30 @@
 	      React.createElement(
 	        'h1',
 	        null,
-	        ' Family Pick n Mix! '
+	        ' Edinburgh Family Day Out '
 	      ),
 	      React.createElement(
-	        'h4',
+	        'p',
 	        null,
 	        'Current Age Group: ',
 	        this.state.currentAgeGroup
 	      ),
-	      React.createElement(
-	        'h4',
-	        null,
-	        'Current Type: ',
-	        this.state.currentType
-	      ),
-	      React.createElement(
-	        'h4',
-	        null,
-	        'Current Budget: ',
-	        this.state.currentBudget
-	      ),
-	      React.createElement(
-	        'h4',
-	        null,
-	        'Current Weather: ',
-	        this.state.currentWeather
-	      ),
+	      'Current Type: ',
+	      this.state.currentType,
+	      'Current Budget: ',
+	      this.state.currentBudget,
+	      'Current Weather: ',
+	      this.state.currentWeather,
 	      React.createElement(
 	        'h3',
 	        null,
-	        'Select Age Group: ',
+	        '1. Select Age Group: ',
 	        React.createElement(AgeSelect, { onSelectAgeGroup: this.handleAgeGroupUpdate }),
-	        'Type of Activity Preferred: ',
+	        '2. Type of Activity Preferred: ',
 	        React.createElement(TypeSelect, { onSelectType: this.handleTypeUpdate }),
-	        'Budget Option: ',
+	        '3. Budget Option: ',
 	        React.createElement(BudgetSelect, { onSelectBudget: this.handleBudgetUpdate }),
-	        'Weather Conditions: ',
+	        '4. Weather Outlook: ',
 	        React.createElement(WeatherSelect, { onSelectWeather: this.handleWeatherUpdate })
 	      ),
 	      React.createElement(
